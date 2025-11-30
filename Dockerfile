@@ -1,7 +1,11 @@
-FROM node:18
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 8080
-CMD ["node", "index.js"]
+version: "3.9"
+services:
+  servicios:
+    build: ./microservices/servicios
+    ports:
+      - "8080:8080"
+
+  promociones:
+    build: ./microservices/promociones
+    ports:
+      - "8081:8080"
